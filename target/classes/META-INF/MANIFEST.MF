@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: ecm-sample-app
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: Admin
+Implementation-Vendor-Id: com.ecm
+Build-Jdk: 1.8.0_121
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/ecm-sample-app
+Created-By: Maven Integration for Eclipse
+
