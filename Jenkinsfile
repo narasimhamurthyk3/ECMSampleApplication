@@ -9,7 +9,9 @@ pipeline {
 	    stage('Mvn Package'){
             steps{
 			 echo "this is a DOCKER_TAG:: ${DOCKER_TAG}";
-			 
+			 def mvnHome = tool name: 'maven-3', type: 'maven'
+			 def mvnCMD = "${mvnHome}/bin/mvn"
+			 sh "${mvnCMD} clean package"
                 
             }
         }
