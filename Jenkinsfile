@@ -46,7 +46,7 @@ pipeline {
                     println "The File exists :)"
 					echo "this is a IMAGE_URL_WITH_TAG:: ${IMAGE_URL_WITH_TAG}";
 					
-					
+					sh 'docker images'
 					sh 'docker stop ecm-sample-application'
 					sh 'docker rm ecm-sample-application'					
 					def dockerRun = 'docker run -p 8084:8084 -d --name ecm-sample-application ${IMAGE_URL_WITH_TAG}'
