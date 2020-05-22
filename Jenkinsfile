@@ -5,9 +5,6 @@ pipeline {
     }
     stages{
 	
-			   stage('Mvn Package'){
-			 
-		   }
 	
 	    stage('Mvn Package){
             steps{
