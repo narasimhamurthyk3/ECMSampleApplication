@@ -1,31 +1,27 @@
-pipeline {
-    agent any
-    environment{
-        DOCKER_TAG = getDockerTag()
-    }
-	sh pwd
-	sh ls
-    stages{
-	
-	sh ls
-        stage('Build Docker Image'){
-            steps{
-                sh "docker build . -t narasimhamurthyk/ecm-sample-application:${DOCKER_TAG} "
-            }
-        }
-        stage('DockerHub Push'){
-            steps{
-                withCredentials([string(credentialsId: 'docker-hub-password', variable: 'dockerHubPwd')]) {
-                    sh "docker login -u narasimhamurthyk -p ${dockerHubPwd}"
-                    sh "docker push narasimhamurthyk/ecm-sample-application:${DOCKER_TAG}"
-                }
-            }
-        }
-  
-    }
-}
+node{
+   stage('SCM Checkout'){
+       git credentialsId: 'GITCredentials', url: 'https://github.com/narasimhamurthyk3/ECMSampleApplication.git'
+   }
+   stage('Mvn Package'){
+     def mvnHome = tool name: 'maven-3', type: 'maven'
+     def mvnCMD = "${mvnHome}/bin/mvn"
+     sh "${mvnCMD} clean package"
+   }
+   stage('Build Docker Image'){
+     sh 'docker build -t narasimhamurthyk/ecm-sample-application:1.0 .'
+   }
+   
+   stage('Push Docker Image'){
+     withCredentials([string(credentialsId: 'docker-hub-password', variable: 'dockerHubPwd')]) {
+        sh "docker login -u narasimhamurthyk -p ${dockerHubPwd}"
+     }
+     sh 'docker push narasimhamurthyk/ecm-sample-application:1.0'
+   }
 
-def getDockerTag(){
-    def tag  = sh script: 'git rev-parse HEAD', returnStdout: true
-    return tag
+   stage('Run Container on Dev Server'){
+     def dockerRun = 'docker run -p 8084:8084 -d --name narasimhamurthyk/ecm-sample-application:1.0'
+     sh 'docker run -p 8084:8084 -d --name ecm-sample-application narasimhamurthyk/ecm-sample-application:1.0'
+	
+    
+   }
 }
