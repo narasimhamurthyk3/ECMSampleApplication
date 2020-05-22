@@ -4,9 +4,23 @@ pipeline {
         DOCKER_TAG = getDockerTag()              
     }
     stages{
+	
+			   stage('Mvn Package'){
+			 
+		   }
+	
+	    stage('Mvn Package){
+            steps{
+			
+			 def mvnHome = tool name: 'maven-3', type: 'maven'
+			 def mvnCMD = "${mvnHome}/bin/mvn"
+			 sh "${mvnCMD} clean package"
+                
+            }
+        }
+	
         stage('Build Docker Image'){
             steps{
-                echo "this is a DOCKER_TAG:: ${DOCKER_TAG}";
                 sh "docker build . -t ${DOCKER_TAG}"
             }
         }
