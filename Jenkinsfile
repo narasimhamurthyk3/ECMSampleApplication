@@ -5,14 +5,7 @@ pipeline {
     }
     stages{
 	
-	   stage('Mvn Package'){
-	   steps{
-			 def mvnHome = tool name: 'maven-3', type: 'maven'
-			 def mvnCMD = "${mvnHome}/bin/mvn"
-			 sh "${mvnCMD} clean package"
-			 }
-			        } 
-	
+	ls
         stage('Build Docker Image'){
             steps{
                 sh "docker build . -t narasimhamurthyk/ecm-sample-application:${DOCKER_TAG} "
