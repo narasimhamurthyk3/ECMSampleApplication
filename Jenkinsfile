@@ -1,7 +1,11 @@
 pipeline {
     agent any
     environment{
-        DOCKER_TAG = getDockerTag()              
+        DOCKER_TAG = getDockerTag()   
+		NEXUS_URL  = "172.31.34.232:8080"
+        IMAGE_URL_WITH_TAG = "narasimhamurthyk/ecm-sample-application:${DOCKER_TAG}"
+
+
     }
     stages{
 	
@@ -12,10 +16,10 @@ pipeline {
                 Boolean bool = true
                 if(bool) {
                     println "The File exists :)"
-					echo "this is a DOCKER_TAG:: ${DOCKER_TAG}";
-			 def mvnHome = tool name: 'maven-3', type: 'maven'
-			 def mvnCMD = "${mvnHome}/bin/mvn"
-			 sh "${mvnCMD} clean package"
+					echo "this is a IMAGE_URL_WITH_TAG:: ${IMAGE_URL_WITH_TAG}";
+					def mvnHome = tool name: 'maven-3', type: 'maven'
+					def mvnCMD = "${mvnHome}/bin/mvn"
+					sh "${mvnCMD} clean package"
 					
                 }
                 else {
@@ -29,7 +33,7 @@ pipeline {
 	
         stage('Build Docker Image'){
             steps{
-                sh "docker build . -t ${DOCKER_TAG}"
+                sh "docker build . -t ${IMAGE_URL_WITH_TAG}"
             }
         }
   
