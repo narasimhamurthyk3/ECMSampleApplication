@@ -48,6 +48,7 @@ pipeline {
 					
 					sh 'docker images'
 					sh 'kubeadm version'
+					sh 'kubectl version'
 					sh 'kubectl get pods --all-namespaces'
 					//sh 'kubectl get pods --all-namespaces'
 					sh 'docker stop ecm-sample-application'
