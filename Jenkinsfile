@@ -3,11 +3,11 @@ pipeline {
     environment{
         DOCKER_TAG = getDockerTag()
     }
-	pwd
-	ls
+	sh pwd
+	sh ls
     stages{
 	
-	ls
+	sh ls
         stage('Build Docker Image'){
             steps{
                 sh "docker build . -t narasimhamurthyk/ecm-sample-application:${DOCKER_TAG} "
