@@ -6,7 +6,7 @@ pipeline {
     stages{
 	
 	
-	    stage('Mvn Package){
+	    stage('Mvn Package"){
             steps{
 			 echo "this is a DOCKER_TAG:: ${DOCKER_TAG}";
 			 
