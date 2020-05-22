@@ -61,8 +61,7 @@
 	            <directory>src/main/resources</directory>
 	            <filtering>true</filtering>
 	        </resource>
-        </resources>
-		
+        </resources>		
 		<finalName>ECMSampleApplication</finalName>
 	</build>
 
