@@ -3,6 +3,8 @@ pipeline {
     environment{
         DOCKER_TAG = getDockerTag()
     }
+	pwd
+	ls
     stages{
 	
 	ls
