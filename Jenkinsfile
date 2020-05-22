@@ -36,6 +36,26 @@ pipeline {
                 sh "docker build . -t ${IMAGE_URL_WITH_TAG}"
             }
         }
+		
+		
+			    stage('Run Container on Dev Server'){
+					steps {        
+						script {
+						Boolean bool = true
+					if(bool) {
+                    println "The File exists :)"
+					echo "this is a IMAGE_URL_WITH_TAG:: ${IMAGE_URL_WITH_TAG}";
+					
+					def dockerRun = 'docker run -p 8084:8084 -d --name narasimhamurthyk/ecm-sample-application:1.0'
+					sh 'docker run -p 8084:8084 -d --name ecm-sample-application ${IMAGE_URL_WITH_TAG}'
+					
+						}
+                else {
+                    println "The File does not exist :("
+                }   
+            }         
+        }
+    }
   
  
     }
