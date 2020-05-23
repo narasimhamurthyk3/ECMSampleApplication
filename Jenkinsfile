@@ -1,14 +1,14 @@
 pipeline {
    agent any
    environment {
-       registry = "magalixcorp/k8scicd"
+       registry = "narasimhamurthyk/ecm-sample-application"
        GOCACHE = "/tmp"
    }
    stages {
        stage('Build') {
            agent {
                docker {
-                   image 'golang'
+                   image 'ecm-sample-application'
                }
            }
            steps {
