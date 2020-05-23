@@ -45,7 +45,7 @@ pipeline {
 					if(bool) {
                     println "The File exists :)"
 					echo "this is a IMAGE_URL_WITH_TAG:: ${IMAGE_URL_WITH_TAG}";
-					
+					sh 'sudo su'
 					sh 'docker images'
 					sh 'kubeadm version'
 					sh 'kubectl version'
