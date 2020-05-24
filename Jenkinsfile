@@ -45,7 +45,10 @@ pipeline {
 					if(bool) {
                     println "The File exists :)"
 					echo "this is a IMAGE_URL_WITH_TAG:: ${IMAGE_URL_WITH_TAG}";
-					sh "ansible-playbook  playbook.yml"
+					//sh "ansible-playbook  playbook.yml"
+					 def image_id = registry + ":$BUILD_NUMBER"
+                   			sh "ansible-playbook  playbook.yml --extra-vars \"image_id=${IMAGE_URL_WITH_TAG}\""	
+						
 					sh 'docker images'
 					sh 'kubeadm version'
 					sh 'kubectl version'
@@ -56,6 +59,9 @@ pipeline {
 					def dockerRun = 'docker run -p 8084:8084 -d --name ecm-sample-application ${IMAGE_URL_WITH_TAG}'
 					sh 'docker run -p 8084:8084 -d --name ecm-sample-application ${IMAGE_URL_WITH_TAG}'
 					
+						
+						
+						
 						}
                 else {
                     println "The File does not exist :("
