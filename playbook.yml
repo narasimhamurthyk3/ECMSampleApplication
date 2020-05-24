@@ -10,3 +10,6 @@
       state: present
       namespace: default
       src: deployment.yml
+      extra_params:
+      IMAGE_NAME: "{{ image_name }}"
+      
