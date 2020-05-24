@@ -58,7 +58,7 @@ pipeline {
 						//sh 'bash changeTag.sh'
 						sh "chmod +x changeTag.sh"
 						sh "./changeTag.sh ${DOCKER_TAG}"
-				sh 'ansible-playbook -i playbook.yml'
+				sh "ansible-playbook  playbook.yml "
 					sh 'docker images'
 					sh 'kubeadm version'
 					sh 'kubectl version'
