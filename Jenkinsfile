@@ -14,7 +14,7 @@ pipeline {
         steps {        
             script {
 		   echo "this is a IMAGE_URL_WITH_TAG:: ${IMAGE_URL_WITH_TAG}";
- 	sh "ansible-playbook  playbook.yml --extra-vars "image_name=${IMAGE_URL_WITH_TAG}""			    
+ 	sh "ansible-playbook  playbook.yml --extra-vars "${IMAGE_URL_WITH_TAG}""			    
                 Boolean bool = true
                 if(bool) {
                     println "The File exists :)"
