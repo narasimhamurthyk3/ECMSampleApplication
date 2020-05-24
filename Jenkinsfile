@@ -54,7 +54,7 @@ pipeline {
 						sh 'pwd'
 						sh 'ls'
 						sh 'whoami'
-						bash changeTag.sh
+						//bash changeTag.sh
 						sh 'bash changeTag.sh'
 						sh './changeTag.sh ${DOCKER_TAG}'
 				sh 'ansible-playbook -i playbook.yml'
