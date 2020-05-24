@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: ecm-sample-application
-        image: ${IMAGE_NAME}
+        image: ${image_name}
         #image: narasimhamurthyk/ecm-sample-application:tagVersion
         imagePullPolicy: IfNotPresent
         ports:
