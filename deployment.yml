@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: ecm-sample-application
-        image: narasimhamurthyk/ecm-sample-application:d5145cb0aad073d82158a2223fb6e3fb213a6c2e
+        image: narasimhamurthyk/ecm-sample-application:tagVersion
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8084
