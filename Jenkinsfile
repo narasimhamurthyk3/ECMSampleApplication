@@ -49,7 +49,9 @@ pipeline {
 					// def image_id = registry + ":$BUILD_NUMBER"
                    			//sh "ansible-playbook  playbook.yml --extra-vars "image_name=${IMAGE_URL_WITH_TAG}\""	
 						
-					ansible-playbook -i playbook.yml --extra-vars "image_name=narasimhamurthyk/ecm-sample-application:962a0ba44f6885fb24a916f59448ac9e615f9e85'"
+					ansible-playbook -i playbook.yml \  
+  --extra-vars \
+    "image_name=narasimhamurthyk/ecm-sample-application:962a0ba44f6885fb24a916f59448ac9e615f9e85'"
 					sh 'docker images'
 					sh 'kubeadm version'
 					sh 'kubectl version'
