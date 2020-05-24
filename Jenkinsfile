@@ -55,9 +55,9 @@ pipeline {
 						sh 'ls'
 						sh 'whoami'
 						//bash changeTag.sh
-						sh 'bash changeTag.sh'
-						sh 'bash deployment-template.yml'
-						sh './changeTag.sh ${DOCKER_TAG}'
+						//sh 'bash changeTag.sh'
+						sh "chmod +x changeTag.sh"
+						sh "./changeTag.sh ${DOCKER_TAG}"
 				sh 'ansible-playbook -i playbook.yml'
 					sh 'docker images'
 					sh 'kubeadm version'
