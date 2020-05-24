@@ -47,8 +47,8 @@ pipeline {
 					echo "this is a IMAGE_URL_WITH_TAG:: ${IMAGE_URL_WITH_TAG}";
 					//sh "ansible-playbook  playbook.yml"
 					// def image_id = registry + ":$BUILD_NUMBER"
-                   			sh "ansible-playbook  playbook.yml --extra-vars \"image_id=${IMAGE_URL_WITH_TAG}\""	
-						
+                   			sh "ansible-playbook  playbook.yml --extra-vars \"image_name=${IMAGE_URL_WITH_TAG}\""	
+					//sh ansible-playbook -i playbook.yml --extra-vars "image_name=test'"	
 					sh 'docker images'
 					sh 'kubeadm version'
 					sh 'kubectl version'
