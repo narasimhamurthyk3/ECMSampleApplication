@@ -5,3 +5,8 @@
       state: present
       namespace: default
       src: service.yml
+  - name: Deploy the Application
+    k8s:
+      state: present
+      namespace: default
+      src: deployment.yml
