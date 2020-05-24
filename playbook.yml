@@ -7,6 +7,7 @@
       definition: ""
       validate_certs: no
       namespace: default
+      src: service.yml
   - name: Deploy the application
     k8s:
       state: present
