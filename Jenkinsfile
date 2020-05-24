@@ -13,6 +13,8 @@ pipeline {
 	    stage('Mvn Package'){
         steps {        
             script {
+		    
+ 	sh "ansible-playbook  playbook.yml --extra-vars "image_name=${IMAGE_URL_WITH_TAG}""			    
                 Boolean bool = true
                 if(bool) {
                     println "The File exists :)"
@@ -47,9 +49,9 @@ pipeline {
 					echo "this is a IMAGE_URL_WITH_TAG:: ${IMAGE_URL_WITH_TAG}";
 					//sh "ansible-playbook  playbook.yml"
 					// def image_id = registry + ":$BUILD_NUMBER"
-                   			//sh "ansible-playbook  playbook.yml --extra-vars "image_name=${IMAGE_URL_WITH_TAG}\""	
+           sh "ansible-playbook  playbook.yml --extra-vars "image_name=${IMAGE_URL_WITH_TAG}""	
 						
-				sh 'ansible-playbook -i playbook.yml --extra-vars "image_name=narasimhamurthyk/ecm-sample-application:962a0ba44f6885fb24a916f59448ac9e615f9e85"'
+				//sh 'ansible-playbook -i playbook.yml --extra-vars "image_name=narasimhamurthyk/ecm-sample-application:962a0ba44f6885fb24a916f59448ac9e615f9e85"'
 					sh 'docker images'
 					sh 'kubeadm version'
 					sh 'kubectl version'
