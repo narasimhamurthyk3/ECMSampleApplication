@@ -25,7 +25,7 @@ public class WelcomeController {
     
     @GetMapping("/welcome")
     @ResponseBody
-    public Welcome welcomeApp(@RequestParam(name="name", required=false, defaultValue="Application V3") String name) {
+    public Welcome welcomeApp(@RequestParam(name="name", required=false, defaultValue="ECM SAMPLE APPLICATION") String name) {
         return new Welcome(String.format(applicationName, name));
     }
 
