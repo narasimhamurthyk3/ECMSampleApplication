@@ -1,13 +1,11 @@
 pipeline {
     agent any
     environment{
-        DOCKER_TAG = getDockerTag()   
-		
+        DOCKER_TAG = getDockerTag()   		
         IMAGE_URL_WITH_TAG = "narasimhamurthyk/ecm-sample-application:${DOCKER_TAG}"
-		VERSION_NUMBER="4.0"
+		VERSION_NUMBER="3.0"
 
     }
-	
     stages{
 	
 	    stage('MVN PACKAGE'){
@@ -102,4 +100,3 @@ def getDockerTag(){
     def tag  = sh script: 'git rev-parse HEAD', returnStdout: true
     return tag
 }
-© 2020 GitHub, Inc.
