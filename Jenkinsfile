@@ -33,7 +33,7 @@ steps{
   def sonarqubeScannerHome = tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
 	  withSonarQubeEnv(credentialsId: 'sonar') {
     // some block
-		  echo "inside sonarqube*****"
+		  echo "inside sonarqube******"
 }
       withCredentials([string(credentialsId: 'sonar', variable: 'sonarLogin')]) {
 	       echo "inside sonarqube#######"
