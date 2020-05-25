@@ -36,7 +36,7 @@ steps{
 		  echo "inside sonarqube*****"
 }
       withCredentials([string(credentialsId: 'sonar', variable: 'sonarLogin')]) {
-	       echo "inside sonarqube#######
+	       echo "inside sonarqube#######"
         sh "${sonarqubeScannerHome}/bin/sonar-scanner -e -Dsonar.host.url=http://ecmserver:9000 -Dsonar.login=${sonarLogin} -Dsonar.projectName=gs-gradle -Dsonar.projectVersion=${env.BUILD_NUMBER} -Dsonar.projectKey=GS -Dsonar.sources=complete/src/main/ -Dsonar.tests=complete/src/test/ -Dsonar.language=java -Dsonar.java.binaries=."
   
   }
