@@ -3,6 +3,7 @@
  */
 package com.ecm.rest.controller;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,6 +14,10 @@ import com.ecm.beans.Welcome;
 @Controller
 public class WelcomeController {
 
+	
+	@Value("${ecm.welcome.message}")
+	private String welcomeMessage;
+	
 	private static final String welcomemsg = "Welcome Mr. %s!";
 	
 	private static final String applicationName = "Welcome to %s!";
@@ -29,4 +34,9 @@ public class WelcomeController {
         return new Welcome(String.format(applicationName, name));
     }
 
+    @GetMapping("/")
+    @ResponseBody
+    public String welcome() {
+        return welcomeMessage;
+    }
 }
